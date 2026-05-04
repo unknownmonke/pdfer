@@ -1,0 +1,19 @@
+plugins {
+	id 'pdfer-common'
+	id 'org.springframework.boot' version '3.5.4'
+	id 'io.freefair.lombok' version "9.5.0"
+}
+
+// This plugin ensures that all dependencies are aligned with the Spring Boot version,
+// versions can be omitted in the dependencies block.
+apply plugin: 'io.spring.dependency-management'
+
+version = '1.0.0'
+description = 'pdf-client'
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	implementation project(':pdf-templates')
+	implementation project(':pdfer-core')
+}

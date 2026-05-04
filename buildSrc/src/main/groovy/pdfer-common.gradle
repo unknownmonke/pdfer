@@ -1,0 +1,20 @@
+plugins {
+    id 'java' // Basic Java support and file structure.
+    id 'java-library' // Adds the 'api' configuration.
+}
+
+group = 'pdfer'
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+tasks.named('test', Test) {
+    useJUnitPlatform()
+}

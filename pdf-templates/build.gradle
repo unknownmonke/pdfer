@@ -1,0 +1,11 @@
+plugins {
+    id 'pdfer-common'
+}
+
+version = '1.0.0'
+description = 'pdfer-templates'
+
+dependencies {
+    api project(':pdfer-template')
+    implementation 'com.itextpdf:itextpdf:5.5.13.4'
+}

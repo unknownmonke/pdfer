@@ -1,0 +1,64 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="oXX5VQtuWsXcpcVKfZG6">
+    <mxGraphModel dx="1770" dy="1716" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="3aGX0B52tsM4Xe63nlwJ-21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="430" width="800" x="-170" y="-80" as="geometry" />
+        </mxCell>
+        <mxCell id="3aGX0B52tsM4Xe63nlwJ-3" edge="1" parent="1" source="3aGX0B52tsM4Xe63nlwJ-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="3aGX0B52tsM4Xe63nlwJ-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3aGX0B52tsM4Xe63nlwJ-19" edge="1" parent="1" source="3aGX0B52tsM4Xe63nlwJ-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="3aGX0B52tsM4Xe63nlwJ-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3aGX0B52tsM4Xe63nlwJ-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Client" vertex="1">
+          <mxGeometry height="40" width="110" x="260" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="3aGX0B52tsM4Xe63nlwJ-12" edge="1" parent="1" source="3aGX0B52tsM4Xe63nlwJ-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="3aGX0B52tsM4Xe63nlwJ-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3aGX0B52tsM4Xe63nlwJ-20" edge="1" parent="1" source="3aGX0B52tsM4Xe63nlwJ-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" target="3aGX0B52tsM4Xe63nlwJ-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3aGX0B52tsM4Xe63nlwJ-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Core library" vertex="1">
+          <mxGeometry height="40" width="110" x="260" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="3aGX0B52tsM4Xe63nlwJ-4" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Provides templates implementing common interface" vertex="1">
+          <mxGeometry height="70" width="160" x="120" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="3aGX0B52tsM4Xe63nlwJ-6" edge="1" parent="1" source="3aGX0B52tsM4Xe63nlwJ-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="3aGX0B52tsM4Xe63nlwJ-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3aGX0B52tsM4Xe63nlwJ-9" edge="1" parent="1" source="3aGX0B52tsM4Xe63nlwJ-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" target="3aGX0B52tsM4Xe63nlwJ-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3aGX0B52tsM4Xe63nlwJ-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Template" vertex="1">
+          <mxGeometry height="40" width="110" x="40" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="3aGX0B52tsM4Xe63nlwJ-8" parent="1" style="html=1;whiteSpace=wrap;" value="&lt;div&gt;«interface»&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;PdfTemplate&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="110" x="-140" y="65" as="geometry" />
+        </mxCell>
+        <mxCell id="3aGX0B52tsM4Xe63nlwJ-11" edge="1" parent="1" source="3aGX0B52tsM4Xe63nlwJ-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="3aGX0B52tsM4Xe63nlwJ-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3aGX0B52tsM4Xe63nlwJ-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="PDF generation framework" vertex="1">
+          <mxGeometry height="40" width="110" x="40" y="-50" as="geometry" />
+        </mxCell>
+        <mxCell id="3aGX0B52tsM4Xe63nlwJ-13" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Auto discovers and registers templates" vertex="1">
+          <mxGeometry height="50" width="90" x="110" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="3aGX0B52tsM4Xe63nlwJ-14" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Provides data payload for generation through HTTP" vertex="1">
+          <mxGeometry height="40" width="120" x="190" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="3aGX0B52tsM4Xe63nlwJ-16" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="PDF document" vertex="1">
+          <mxGeometry height="40" width="110" x="480" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="3aGX0B52tsM4Xe63nlwJ-18" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Calls template generation method and returns document bytes" vertex="1">
+          <mxGeometry height="70" width="130" x="360" y="200" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

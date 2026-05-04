@@ -1,0 +1,8 @@
+// Gradle parent project.
+rootProject.name = 'pdfer'
+
+include 'pdfer-template'
+include 'pdf-templates'
+include 'pdfer-core'
+include 'pdf-client'
+

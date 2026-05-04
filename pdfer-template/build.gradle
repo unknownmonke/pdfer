@@ -1,0 +1,11 @@
+plugins {
+    id 'pdfer-common'
+}
+
+version = '1.0.0'
+description = 'pdfer-template'
+
+dependencies {
+    // 'api' provides transitivity, allowing consumers of this library to also access these dependencies.
+    api 'com.fasterxml.jackson.core:jackson-databind:2.21.2'
+}

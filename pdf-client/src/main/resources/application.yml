@@ -1,0 +1,15 @@
+debug: false # Enables condition evaluation report logging at startup.
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: pdfer-client
+
+pdfer:
+  web:
+    endpoint:
+      enable: true
+      base_uri: pdfer
+      generate-uri: generate
