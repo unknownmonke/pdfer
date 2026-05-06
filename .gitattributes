@@ -1,0 +1,31 @@
+# Inspired from https://github.com/gitattributes/gitattributes/blob/master/Java.gitattributes.
+
+# Java sources.
+*.java          text diff=java
+*.kt            text diff=kotlin
+*.groovy        text diff=java
+*.gradle        text diff=java
+*.gradle.kts    text diff=kotlin
+
+# These files are text and should be normalized (converts crlf => lf).
+*.css           text diff=css
+*.scss          text diff=css
+*.html          text diff=html
+*.js            text
+*.properties    text
+*.xml           text
+*.yml           text
+
+# These files are binary and should be left untouched
+# (binary is a macro for -text -diff).
+*.class         binary
+*.jar           binary
+*.war           binary
+*.jks           binary
+
+# Common build-tool wrapper scripts ('.cmd' versions are handled by 'Common.gitattributes')
+mvnw            text eol=lf
+gradlew         text eol=lf
+
+# These are explicitly windows files and should use crlf.
+*.bat           text eol=crlf
