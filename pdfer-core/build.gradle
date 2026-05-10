@@ -15,4 +15,5 @@ dependencies {
     api project(':pdfer-template')
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
 }

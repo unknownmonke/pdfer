@@ -4,10 +4,13 @@
 
 - [Overview](#overview-)
 - [Projects](#projects-)
-  - [`pdfer-template`](#pdfer-template-)
-  - [`pdfer-templates`](#pdfer-templates-)
-  - [`pdfer-core`](#pdfer-core-)
-  - [`pdf-client`](#pdf-client-)
+    - [`pdfer-template`](#pdfer-template-)
+    - [`pdfer-templates`](#pdfer-templates-)
+    - [`pdfer-core`](#pdfer-core-)
+    - [`pdf-client`](#pdf-client-)
+- [Capabilities](#capabilities-)
+    - [Web capability](#web-capability-)
+    - [Email capability](#email-capability-)
 
 <br>
 
@@ -19,11 +22,15 @@
 
 - New templates can be registered under a `pdfer.templates` package, library provide generation endpoint and capabilities out of the box though a **common abstraction**.
 
-- The parent project exposes a custom `pdfer-java-common` **gradle plugin** for **common configuration**, including `java` and `java-library` plugins, though the use of [buildSrc](https://docs.gradle.org/current/userguide/sharing_build_logic_between_subprojects.html).
-
 <br>
 
 <img src="./readme/overview.webp" alt="drawing" width="900"/>
+
+<br>
+
+- As of now this project works as a Gradle multi-project :
+
+    - The parent project exposes a custom `pdfer-java-common` **gradle plugin** for **common configuration**, including `java` and `java-library` plugins, though the use of [buildSrc](https://docs.gradle.org/current/userguide/sharing_build_logic_between_subprojects.html).
 
 <br>
 
@@ -33,19 +40,19 @@
 
 - Provides :
 
-  - A common `PdfTemplate` interface for templates.
+    - A common `PdfTemplate` interface for templates.
 
-  - A custom `@PdfTemplateComponent` annotation for template classes for defining template name, group and scope when registering templates with the application context :
+    - A custom `@PdfTemplateComponent` annotation for template classes for defining template name, group and scope when registering templates with the application context :
 
-    - `name` (**mandatory**) : used as the name of the bean.
-    - `group` (**optional**) : associated with its own context. Default at root level.
-    - `scope` (**optional**) : singleton or prototype. Default as a prototype bean.
+        - `name` (**mandatory**) : used as the name of the bean.
+        - `group` (**optional**) : associated with its own context. Default at root level.
+        - `scope` (**optional**) : singleton or prototype. Default as a prototype bean.
 
-  - An `AbstractJsonPdfTemplate` to convert a JSON payload into a map to work with templates.
+    - An `AbstractJsonPdfTemplate` to convert a JSON payload into a map to work with templates.
 
 - Interface **decouples** client code from actual framework used to generate PDF documents.
 
-  - Libraries can generate PDF documents using multiple means as long as they implement `PdfTemplate` and are annotated with `@PdfTemplateComponent`.
+    - Libraries can generate PDF documents using multiple means as long as they implement `PdfTemplate` and are annotated with `@PdfTemplateComponent`.
 
 - This library is exposed to custom template libraries and applications as a transitive dependency, as well as internal dependency for the `pdfer-core` library.
 
@@ -73,14 +80,14 @@
 
 - Core library for PDF generation :
 
-  - Discovers and registers templates within specified package.
-  - Provides default capabilities such as a generation API endpoint.
+    - Discovers and registers templates within specified package.
+    - Provides default capabilities such as a generation API endpoint.
 
 - A custom **component scanner** (`TemplateComponentScanner`) is implemented to register template beans with the following rules :
 
-  - Implements `PdfTemplate`.
-  - Annotated with `@PdfTemplateComponent`.
-  - Found within `pdfer.templates` package.
+    - Implements `PdfTemplate`.
+    - Annotated with `@PdfTemplateComponent`.
+    - Found within `pdfer.templates` package.
 
     <br>
 
@@ -101,61 +108,46 @@
 
 - Templates can be **grouped** by defining the `group` attribute of `@PdfTemplateComponent` annotation :
 
-  - `PdfTemplate` beans are registered with a **different application context for each group** :
+    - `PdfTemplate` beans are registered with a **different application context for each group** :
 
-      <br>
+        <br>
 
-      <img src="./readme/subcontexts_ex.webp" alt="drawing" width="700"/>
+        <img src="./readme/subcontexts_ex.webp" alt="drawing" width="700"/>
 
-      <br>
+        <br>
 
-  - Each subcontext is a child of the root context and has its own set of `PdfTemplate` registered beans.
+    - Each subcontext is a child of the root context and has its own set of `PdfTemplate` registered beans.
 
-  - Group templates will override any matched root-level template.
+    - Group templates will override any matched root-level template.
 
-  - Root context is different from the main Spring application context.
+    - Root context is different from the main Spring application context.
 
-  - This allows templates to be part of multiple groups under the same name for flexibility.
+    - This allows templates to be part of multiple groups under the same name for flexibility.
 
-  - This mechanism prevents using a simple `@ComponentScan` annotation to define **inclusion** and **exclusion filters**, **name** and **scope resolvers**, like so :
+    - This mechanism prevents using a simple `@ComponentScan` annotation to define **inclusion** and **exclusion filters**, **name** and **scope resolvers**, like so :
 
-      ``` java
-      @ComponentScan(
-          basePackages = BASE_PACKAGE,
-          useDefaultFilters = false,
-          excludeFilters = @ComponentScan.Filter(type = FilterType.CUSTOM, value = TemplateExcludeFilter.class),
-          includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, value = PdfTemplateComponent.class),
-          nameGenerator = TemplateBeanNameGenerator.class,
-          scopeResolver = TemplateScopeMetadataResolver.class
-      )
-      ```
-      <br>
+        ``` java
+        @ComponentScan(
+            basePackages = BASE_PACKAGE,
+            useDefaultFilters = false,
+            excludeFilters = @ComponentScan.Filter(type = FilterType.CUSTOM, value = TemplateExcludeFilter.class),
+            includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, value = PdfTemplateComponent.class),
+            nameGenerator = TemplateBeanNameGenerator.class,
+            scopeResolver = TemplateScopeMetadataResolver.class
+        )
+        ```
+        <br>
 
 - Subcontexts with their registered templates are kept in a **registry** : `Map<String, AnnotationConfigApplicationContext> templateRegistries`.
 
 - The `PdferRegistryContainer` component :
 
-  - Launches the scan and starts all contexts.
-  - Exposes methods to find and list templates.
+    - Launches the scan and starts all contexts.
+    - Exposes methods to find and list templates.
 
 <br>
 
 <img src="./readme/pdfer_core.webp" alt="drawing" width="1000"/>
-
-<br>
-
-**<ins>Capabilities</ins>** :
-
-- A **generation and download endpoint** is autoconfigured :
-
-  - Receives a template ID and a `GenerationRequest` with desired filename and payload.
-
-  - Calls service to generate the document bytes and return response as attachment.
-
-  - **Conditional configuration** :
-
-    - Enabled with `pdfer.web.endpoint.enable`.
-    - Can customize `pdfer.web.endpoint.base_uri` and `pdfer.web.endpoint.generate-uri` (default `pdfer/generate`).
 
 #
 ### `pdf-client` [🔼](#summary)
@@ -163,3 +155,64 @@
 - Small MVC client to test PDF generation. Provides a simple page to select registered templates in list and generate the PDF document.
 
 - The page only supports JSON templates as it will ask for a JSON payload and convert it to a map before sending it to the generation endpoint.
+
+<br>
+
+## Capabilities [🔼](#summary)
+
+- In addition to template registration, core library autoconfigures :
+
+    - **Web capability**.
+    - **Email capability**.
+
+#
+### Web capability [🔼](#summary)
+
+- Returns PDF as attachment for **direct download**.
+
+- **Conditional configuration** :
+
+    - Enabled with `pdfer.web.endpoint.enable`.
+    - Can customize `pdfer.web.endpoint.base_uri` and `pdfer.web.endpoint.download-uri` (default `pdfer/download`).
+
+#
+### Email capability [🔼](#summary)
+
+- Generate and send as **email attachment**.
+
+- Uses [Spring Mail](https://docs.spring.io/spring-framework/reference/integration/email.html).
+
+- **Conditional configuration** :
+
+    - Enabled with `pdfer.mail.enable`.
+    - Requires web capability : `pdfer.mail.endpoint.enable`, `pdfer.web.endpoint.enable`.
+    - Can customize `pdfer.web.endpoint.mail-uri` (default `/mail`).
+
+- **Required configuration** :
+
+    - SMTP must be configured through *properties* and *environment variables*.
+
+*Ex :*
+
+``` yaml
+pdfer:
+    web:
+        endpoint:
+            enable: true
+            base_uri: pdfer
+            download-uri: download
+            mail-uri: mail
+    mail:
+        enable: true
+        endpoint:
+            enable: true # Enables sending mail through HTTP.
+        send-from: pdf.client@monke.org
+        smtp:
+            host: ${SMTP_HOST} # Ex : smtp.gmail.com.
+            port: 587
+            username: ${SMTP_USERNAME} # Ex : Google mail address.
+            password: ${SMTP_PASSWORD} # Ex : Gmail app password, see https://support.google.com/accounts/answer/185833.
+            java-mail-properties:
+                mail.smtp.auth: true
+                mail.smtp.starttls.enable: true
+```

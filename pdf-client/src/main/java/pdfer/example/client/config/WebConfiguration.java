@@ -24,9 +24,9 @@ public class WebConfiguration implements WebMvcConfigurer {
         registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
     }
 
-    // Sets base URL redirect to generate page.
+    // Sets base URL redirect to direct download page.
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("redirect:/client/generate");
+        registry.addViewController("/").setViewName("redirect:/client/download");
     }
 }

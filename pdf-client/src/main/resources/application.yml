@@ -12,4 +12,18 @@ pdfer:
     endpoint:
       enable: true
       base_uri: pdfer
-      generate-uri: generate
+      download-uri: download
+      mail-uri: mail
+  mail:
+    enable: true # Enables sending mail programmatically through mailer bean.
+    endpoint:
+      enable: true # Enables sending mail through HTTP.
+    send-from: pdf.client@monke.org
+    smtp:
+      host: ${SMTP_HOST}
+      port: 587
+      username: ${SMTP_USERNAME}
+      password: ${SMTP_PASSWORD}
+      java-mail-properties:
+        mail.smtp.auth: true
+        mail.smtp.starttls.enable: true

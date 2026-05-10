@@ -2,9 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/pdf-client" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/pdf-templates" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/pdfer-core" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/pdfer-template" vcs="Git" />
   </component>
 </project>

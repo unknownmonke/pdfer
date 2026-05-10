@@ -35,7 +35,10 @@
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav me-auto mb-2 mb-md-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="generate">Generate</a>
+                                <a class="nav-link active" aria-current="page" href="download">Direct Download</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="email">Email</a>
                             </li>
                         </ul>
                     </div>
@@ -48,6 +51,7 @@
             <div class="bg-light p-5 rounded">
                 <h1>Pdfer Client</h1>
                 <p class="lead">Try out the Pdfer API from this page.</p>
+                {{ result }}
                 <form method="post" action="">
                     <div class="mb-3">
                         <label for="filename" class="form-label">Select the output file name :</label>
@@ -64,7 +68,7 @@
                             {{ templates }}
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary mt-2">Generate PDF</button>
+                    <button type="submit" class="btn btn-primary mt-2">Download PDF</button>
                 </form>
             </div>
         </main>

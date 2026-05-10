@@ -1,7 +1,7 @@
 package pdfer.core;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import pdfer.core.exception.PdferException;
 import pdfer.core.registry.PdferRegistryContainer;
 import pdfer.template.PdfTemplate;
@@ -11,7 +11,7 @@ import static pdfer.template.PdfTemplateComponent.ROOT_REGISTRY;
 /**
  * Finds templates in registry, sets payload and generate documents.
  */
-@Component
+@Service
 @RequiredArgsConstructor
 public class PdfGenerationService {
 
