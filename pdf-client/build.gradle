@@ -16,4 +16,15 @@ dependencies {
 
 	implementation project(':pdf-templates')
 	implementation project(':pdfer-core')
+
+	implementation(project(':pdfer-core')) {
+		capabilities {
+			requireCapability('pdfer:pdfer-core-web')
+		}
+	}
+	implementation(project(':pdfer-core')) {
+		capabilities {
+			requireCapability('pdfer:pdfer-core-email')
+		}
+	}
 }

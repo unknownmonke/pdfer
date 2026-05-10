@@ -11,9 +11,18 @@ apply plugin: 'io.spring.dependency-management'
 version = '1.0.0'
 description = 'pdfer-core'
 
+java {
+    registerFeature('web') {
+        usingSourceSet(sourceSets.main)
+    }
+    registerFeature('email') {
+        usingSourceSet(sourceSets.main)
+    }
+}
+
 dependencies {
     api project(':pdfer-template')
 
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    webApi 'org.springframework.boot:spring-boot-starter-web'
+    emailApi 'org.springframework.boot:spring-boot-starter-mail'
 }
