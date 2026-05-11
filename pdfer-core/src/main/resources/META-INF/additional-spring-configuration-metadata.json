@@ -1,0 +1,14 @@
+{ "properties": [
+    {
+        "name": "pdfer.web.endpoint.base-uri",
+        "defaultValue": "pdfer"
+    },
+    {
+        "name": "pdfer.web.endpoint.download-uri",
+        "defaultValue": "download"
+    },
+    {
+        "name": "pdfer.web.endpoint.mail-uri",
+        "defaultValue": "mail"
+    }
+] }

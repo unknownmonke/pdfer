@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
-import pdfer.core.mail.model.PdferMailProperties;
-import pdfer.core.mail.model.SmtpServer;
+import pdfer.core.props.PdferMailProperties;
+import pdfer.core.props.SmtpServer;
 
 import java.util.Properties;
 
@@ -30,20 +30,20 @@ public class PdferMailConfiguration {
      */
     @Bean
     public JavaMailSender javaMailSender(PdferMailProperties mailProperties) {
-        SmtpServer smtp = mailProperties.getSmtp();
+        SmtpServer smtp = mailProperties.getSmtpServer();
 
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 
-        mailSender.setHost(smtp.host());
-        mailSender.setPort(smtp.port());
-        mailSender.setUsername(smtp.username());
-        mailSender.setPassword(smtp.password());
+        mailSender.setHost(smtp.getHost());
+        mailSender.setPort(smtp.getPort());
+        mailSender.setUsername(smtp.getUsername());
+        mailSender.setPassword(smtp.getPassword());
 
         Properties props = mailSender.getJavaMailProperties();
 
-        if (smtp.javaMailProperties() != null) {
+        if (smtp.getJavaMailProperties() != null) {
 
-            props.putAll(smtp.javaMailProperties());
+            props.putAll(smtp.getJavaMailProperties());
             mailSender.setJavaMailProperties(props);
         }
         return mailSender;

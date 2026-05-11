@@ -20,9 +20,17 @@ java {
     }
 }
 
+// When using additional-spring-configuration-metadata.json.
+compileJava {
+    inputs.files(processResources)
+}
+
 dependencies {
     api project(':pdfer-template')
 
     webApi 'org.springframework.boot:spring-boot-starter-web'
     emailApi 'org.springframework.boot:spring-boot-starter-mail'
+
+    // Generates metadata for Spring Boot configuration properties, allowing for better IDE support and documentation.
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 }

@@ -16,7 +16,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import pdfer.core.exception.PdferMailException;
-import pdfer.core.mail.model.PdferMailProperties;
+import pdfer.core.props.PdferMailProperties;
 
 import java.util.Arrays;
 import java.util.List;

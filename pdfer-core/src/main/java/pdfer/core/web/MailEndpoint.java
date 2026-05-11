@@ -27,7 +27,7 @@ import pdfer.core.web.model.EmailRequest;
 @ConditionalOnWebApplication
 @ConditionalOnBean(type = { "pdfer.core.mail.PdfMailService", "pdfer.core.PdfGenerationService" })
 @ConditionalOnProperty(name = "pdfer.web.endpoint.enable", havingValue = "true")
-@ConditionalOnProperty(name = "pdfer.mail.endpoint.enable", havingValue = "true")
+@ConditionalOnProperty(name = "pdfer.mail.enable", havingValue = "true")
 @RequiredArgsConstructor
 public class MailEndpoint {
 

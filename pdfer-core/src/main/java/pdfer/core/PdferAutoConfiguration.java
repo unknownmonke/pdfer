@@ -1,11 +1,10 @@
 package pdfer.core;
 
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.annotation.ComponentScan;
-import pdfer.core.mail.model.PdferMailProperties;
 
 @AutoConfiguration
 @ComponentScan
-@EnableConfigurationProperties(PdferMailProperties.class)
+@ConfigurationPropertiesScan(basePackages = "pdfer.core.props")
 public class PdferAutoConfiguration { }
