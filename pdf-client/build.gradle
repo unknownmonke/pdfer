@@ -8,7 +8,7 @@ plugins {
 // versions can be omitted in the dependencies block.
 apply plugin: 'io.spring.dependency-management'
 
-version = '1.0.0'
+version = '1.1.0'
 description = 'pdf-client'
 
 dependencies {

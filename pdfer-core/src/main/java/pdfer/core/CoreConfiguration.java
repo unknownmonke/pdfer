@@ -7,4 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 @AutoConfiguration
 @ComponentScan
 @ConfigurationPropertiesScan(basePackages = "pdfer.core.props")
-public class PdferAutoConfiguration { }
+public class CoreConfiguration {
+
+    public static final String PROFILE_CLI = "pdfer-cli";
+}

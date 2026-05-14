@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import pdfer.core.mail.model.Email;
-import pdfer.core.registry.PdferRegistryContainer;
+import pdfer.core.registry.TemplateRegistryContainer;
 import pdfer.core.web.model.DownloadRequest;
 import pdfer.core.web.model.EmailRequest;
 import pdfer.core.web.model.GenerationRequest;
@@ -41,7 +41,7 @@ public class ClientController {
     @Value("#{'${pdfer.web.endpoint.base-uri}/${pdfer.web.endpoint.mail-uri}'}")
     private String emailUri;
 
-    private final PdferRegistryContainer registryContainer;
+    private final TemplateRegistryContainer registryContainer;
     private final ObjectMapper mapper;
     private final RestTemplate restTemplate;
 

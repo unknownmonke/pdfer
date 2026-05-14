@@ -3,7 +3,7 @@ package pdfer.core;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pdfer.core.exception.PdferException;
-import pdfer.core.registry.PdferRegistryContainer;
+import pdfer.core.registry.TemplateRegistryContainer;
 import pdfer.template.PdfTemplate;
 
 import static pdfer.template.PdfTemplateComponent.ROOT_REGISTRY;
@@ -15,7 +15,7 @@ import static pdfer.template.PdfTemplateComponent.ROOT_REGISTRY;
 @RequiredArgsConstructor
 public class PdfGenerationService {
 
-    private final PdferRegistryContainer pdferRegistryContainer;
+    private final TemplateRegistryContainer registryContainer;
 
 
     public byte[] generatePdfDocumentByPath(String templatePath, Object data) {
@@ -28,7 +28,7 @@ public class PdfGenerationService {
     }
 
     private PdfTemplate<?> findTemplate(String group, String name) {
-        return pdferRegistryContainer.findTemplate(group, name);
+        return registryContainer.findTemplate(group, name);
     }
 
     private byte[] generatePdfDocument(String group, String templateName, Object payload) {

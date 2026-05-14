@@ -8,7 +8,7 @@ import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import pdfer.core.PdfGenerationService;
 import pdfer.core.exception.TemplateNotFoundException;
-import pdfer.core.registry.PdferRegistryContainer;
+import pdfer.core.registry.TemplateRegistryContainer;
 import pdfer.template.PdfTemplate;
 
 import java.io.FileOutputStream;
@@ -16,14 +16,16 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import static pdfer.core.CoreConfiguration.PROFILE_CLI;
+
 @ShellComponent
 @ConditionalOnClass(name = "org.springframework.shell.standard.ShellComponent")
-@Profile("pdfer-cli")
+@Profile(PROFILE_CLI)
 @RequiredArgsConstructor
 public class Commands {
 
     private final PdfGenerationService service;
-    private final PdferRegistryContainer registryContainer;
+    private final TemplateRegistryContainer registryContainer;
     private final ObjectMapper mapper;
 
 

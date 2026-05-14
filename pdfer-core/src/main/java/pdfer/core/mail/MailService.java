@@ -11,12 +11,11 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.system.JavaVersion;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.MediaType;
-import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import pdfer.core.exception.PdferMailException;
-import pdfer.core.props.PdferMailProperties;
+import pdfer.core.exception.MailException;
+import pdfer.core.props.MailProperties;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,17 +26,17 @@ import java.util.Objects;
 @ConditionalOnProperty(name = "pdfer.mail.enable", havingValue = "true")
 @ConditionalOnJava(range = ConditionalOnJava.Range.EQUAL_OR_NEWER, value = JavaVersion.SEVENTEEN)
 @RequiredArgsConstructor
-public class PdfMailService {
+public class MailService {
 
     private final JavaMailSender mailSender;
-    private final PdferMailProperties mailProperties;
+    private final MailProperties mailProperties;
 
     /**
      * Sends a message with PDF attachment to a single string of email addresses separated by commas.
      * Uses configured properties for sendFrom and replyTo.
      */
     public void sendMessageWithPdfAttachment(String destinations, String subject, String content,
-                                             byte[] attachment, String attachmentFilename) throws PdferMailException {
+                                             byte[] attachment, String attachmentFilename) throws MailException {
         sendMessageWithPdfAttachmentToList(
             Arrays.asList(destinations.split(",")),
             subject, content, attachment, attachmentFilename,
@@ -49,7 +48,7 @@ public class PdfMailService {
      */
     public void sendMessageWithPdfAttachment(String destinations, String subject, String content,
                                              byte[] attachment, String attachmentFilename,
-                                             String sendFrom, String replyTo) throws PdferMailException {
+                                             String sendFrom, String replyTo) throws MailException {
         sendMessageWithPdfAttachmentToList(
             Arrays.asList(destinations.split(",")),
             subject, content, attachment, attachmentFilename,
@@ -61,7 +60,7 @@ public class PdfMailService {
      */
     public void sendMessageWithPdfAttachmentToList(List<String> destinations, String subject, String content,
                                                    byte[] attachment, String attachmentFilename,
-                                                   String sendFrom, String replyTo) throws PdferMailException {
+                                                   String sendFrom, String replyTo) throws MailException {
 
         List<InternetAddress> recipients = destinations
             .stream()
@@ -72,7 +71,7 @@ public class PdfMailService {
                     return new InternetAddress(address);
 
                 } catch (AddressException e) {
-                    throw new PdferMailException(e);
+                    throw new MailException(e);
                 }
             })
             .toList();
@@ -85,7 +84,7 @@ public class PdfMailService {
      */
     public void sendMessageWithPdfAttachment(List<InternetAddress> destinations, String subject, String content,
                                              byte[] attachment, String attachmentFilename,
-                                             String sendFrom, String replyTo) throws PdferMailException {
+                                             String sendFrom, String replyTo) throws MailException {
 
         MimeMessage message = mailSender.createMimeMessage();
 
@@ -115,14 +114,14 @@ public class PdfMailService {
             helper.addAttachment(attachmentFilename, new ByteArrayResource(attachment), MediaType.APPLICATION_PDF_VALUE);
 
         } catch (MessagingException e) {
-            throw new PdferMailException(e);
+            throw new MailException(e);
         }
 
         try {
             mailSender.send(message);
 
-        } catch (MailException e) {
-            throw new PdferMailException(e);
+        } catch (org.springframework.mail.MailException e) {
+            throw new MailException(e);
         }
     }
 }

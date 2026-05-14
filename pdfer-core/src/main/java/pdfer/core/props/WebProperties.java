@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Getter
 @RequiredArgsConstructor
 @ConfigurationProperties(prefix = "pdfer.web.endpoint")
-public class PdferWebProperties {
+public class WebProperties {
 
     /** Whether to expose web controller or not. If false, endpoint will not be available. */
     private final boolean enable;

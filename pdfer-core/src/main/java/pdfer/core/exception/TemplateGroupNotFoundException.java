@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class TemplateGroupNotFoundException extends PdferRegistryException {
+public class TemplateGroupNotFoundException extends TemplateRegistryException {
 
     private final String group;
 }

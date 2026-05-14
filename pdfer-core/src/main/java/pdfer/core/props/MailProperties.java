@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty;
 @Getter
 @RequiredArgsConstructor
 @ConfigurationProperties(prefix = "pdfer.mail")
-public class PdferMailProperties {
+public class MailProperties {
 
     /** Whether to expose mail controller, service and mailer bean. If false, none will be available. */
     private final boolean enable;
@@ -32,6 +32,8 @@ public class PdferMailProperties {
             pdfer.mail.smtp.host: %s
             pdfer.mail.smtp.port: %d
             pdfer.mail.smtp.username: %s
-        """.formatted(enable, sendFrom, replyTo, smtpServer.getHost(), smtpServer.getPort(), smtpServer.getUsername());
+            pdfer.mail.smtp.java-mail-properties: %s
+        """.formatted(enable, sendFrom, replyTo,
+                smtpServer.getHost(), smtpServer.getPort(), smtpServer.getUsername(), smtpServer.printProperties());
     }
 }

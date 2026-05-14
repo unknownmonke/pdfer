@@ -8,14 +8,14 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplicat
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pdfer.core.PdfGenerationService;
-import pdfer.core.exception.PdferMailException;
-import pdfer.core.mail.PdfMailService;
+import pdfer.core.exception.MailException;
+import pdfer.core.mail.MailService;
 import pdfer.core.web.model.EmailRequest;
 
 /**
  * API endpoint to send mails with PDF attachments though :
  * <ul>
- *     <li> Mailing capability provided by {@link PdfMailService}.
+ *     <li> Mailing capability provided by {@link MailService}.
  *     <li> PDF generation provided by {@link PdfGenerationService}.
  * </ul>
  *
@@ -25,14 +25,14 @@ import pdfer.core.web.model.EmailRequest;
 @RestController
 @RequestMapping("${pdfer.web.endpoint.base_uri:pdfer}")
 @ConditionalOnWebApplication
-@ConditionalOnBean(type = { "pdfer.core.mail.PdfMailService", "pdfer.core.PdfGenerationService" })
+@ConditionalOnBean(type = {"pdfer.core.mail.MailService", "pdfer.core.PdfGenerationService" })
 @ConditionalOnProperty(name = "pdfer.web.endpoint.enable", havingValue = "true")
 @ConditionalOnProperty(name = "pdfer.mail.enable", havingValue = "true")
 @RequiredArgsConstructor
 public class MailEndpoint {
 
     private final PdfGenerationService service;
-    private final PdfMailService mailService;
+    private final MailService mailService;
 
 
     @PostMapping("/${pdfer.web.endpoint.mail-uri:mail}/{templateId}")
@@ -52,7 +52,7 @@ public class MailEndpoint {
     }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler({ PdferMailException.class })
+    @ExceptionHandler({ MailException.class })
     public void handleMailException(Exception e) {
         log.error("Error during processing.", e);
     }

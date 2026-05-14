@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
-import pdfer.core.props.PdferMailProperties;
+import pdfer.core.props.MailProperties;
 import pdfer.core.props.SmtpServer;
 
 import java.util.Properties;
@@ -22,14 +22,14 @@ import java.util.Properties;
 @AutoConfiguration
 @ConditionalOnClass(name = "org.springframework.mail.javamail.JavaMailSender")
 @ConditionalOnProperty(name = "pdfer.mail.enable", havingValue = "true")
-public class PdferMailConfiguration {
+public class MailConfiguration {
 
     /**
      * Configures an internal {@link JavaMailSender} bean for concrete email sending,
      * and binds properties from <CODE>pdfer.mail.*</CODE> namespace.
      */
     @Bean
-    public JavaMailSender javaMailSender(PdferMailProperties mailProperties) {
+    public JavaMailSender javaMailSender(MailProperties mailProperties) {
         SmtpServer smtp = mailProperties.getSmtpServer();
 
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();

@@ -33,4 +33,9 @@ public class SmtpServer {
      * e.g. by setting <CODE>mail.smtp.starttls.enable</CODE> to <CODE>true</CODE> for TLS connections.
      */
     private final Properties javaMailProperties;
+
+
+    public String printProperties() {
+        return javaMailProperties.toString();
+    }
 }

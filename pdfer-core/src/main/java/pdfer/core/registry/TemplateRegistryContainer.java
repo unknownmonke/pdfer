@@ -19,15 +19,15 @@ import static pdfer.template.PdfTemplateComponent.*;
 /**
  * Holds a template registry for each registered template group in a separate context.
  * Launches the scan using {@link TemplateComponentScanner},
- * starts contexts and makes templates available through the {@link PdferRegistryContainer#findTemplate(String)} method.
+ * starts contexts and makes templates available through the {@link TemplateRegistryContainer#findTemplate(String)} method.
  */
 @Component
-public class PdferRegistryContainer {
+public class TemplateRegistryContainer {
 
     private final Map<String, AnnotationConfigApplicationContext> templateRegistries;
 
 
-    public PdferRegistryContainer() {
+    public TemplateRegistryContainer() {
         TemplateComponentScanner scanner = new TemplateComponentScanner();
         scanner.scan(BASE_PACKAGE);
 

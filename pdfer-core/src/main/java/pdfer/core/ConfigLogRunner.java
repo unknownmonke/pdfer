@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import pdfer.core.props.PdferMailProperties;
-import pdfer.core.props.PdferWebProperties;
+import pdfer.core.props.MailProperties;
+import pdfer.core.props.WebProperties;
 
 /**
  * Logs pdfer configuration on startup.
@@ -15,8 +15,8 @@ import pdfer.core.props.PdferWebProperties;
 @RequiredArgsConstructor
 public class ConfigLogRunner implements CommandLineRunner {
 
-    private final PdferWebProperties webProperties;
-    private final PdferMailProperties mailProperties;
+    private final WebProperties webProperties;
+    private final MailProperties mailProperties;
 
     @Override
     public void run(String... args) {
