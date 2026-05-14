@@ -18,6 +18,9 @@ java {
     registerFeature('email') {
         usingSourceSet(sourceSets.main)
     }
+    registerFeature('cli') {
+        usingSourceSet(sourceSets.main)
+    }
 }
 
 // When using additional-spring-configuration-metadata.json.
@@ -30,7 +33,16 @@ dependencies {
 
     webApi 'org.springframework.boot:spring-boot-starter-web'
     emailApi 'org.springframework.boot:spring-boot-starter-mail'
+    cliApi 'org.springframework.shell:spring-shell-starter:3.3.4'
+    cliApi 'com.fasterxml.jackson.core:jackson-databind:2.21.2'
 
     // Generates metadata for Spring Boot configuration properties, allowing for better IDE support and documentation.
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+}
+
+// Required for Spring Shell. See https://docs.spring.io/spring-shell/reference/3.4/getting-started.html.
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.shell:spring-shell-dependencies:3.3.4"
+    }
 }

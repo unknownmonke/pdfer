@@ -6,6 +6,8 @@ server:
 spring:
   application:
     name: pdfer-client
+  profiles:
+    active: pdfer-cli
 
 pdfer:
   web:
@@ -25,3 +27,12 @@ pdfer:
       java-mail-properties:
         mail.smtp.auth: true
         mail.smtp.starttls.enable: true
+
+---
+spring:
+  config:
+    activate:
+      on-profile: pdfer-cli
+  shell:
+    interactive:
+      enabled: true # By default, Spring Shell disables interactive mode.

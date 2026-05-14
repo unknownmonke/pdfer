@@ -11,6 +11,7 @@
 - [Capabilities](#capabilities-)
     - [Web capability](#web-capability-)
     - [Email capability](#email-capability-)
+    - [CLI capability](#cli-capability-)
 
 <br>
 
@@ -164,7 +165,25 @@
 
     - **Web capability**.
     - **Email capability**.
+    - **CLI capability**.
 
+- Users choose which capabilities to depend on in their client projects in a modular way.
+
+- Capabilities are enabled by :
+
+    - Specifying conditional properties (*ex : `pdfer.mail.enable`*) - see below.
+
+    - Enabling capability in `build.gradle` :
+
+        *Ex :*
+
+        ``` groovy
+        implementation(project(':pdfer-core')) {
+            capabilities {
+                requireCapability('pdfer:pdfer-core-email')
+            }
+        }
+        ```
 #
 ### Web capability [🔼](#summary)
 
@@ -191,6 +210,7 @@
 - **Required configuration** :
 
     - SMTP must be configured through *properties* and *environment variables*.
+    - [Free SMTP server.](https://www.mailjet.com/)
 
 *Ex :*
 
@@ -215,4 +235,33 @@ pdfer:
             java-mail-properties:
                 mail.smtp.auth: true
                 mail.smtp.starttls.enable: true
+```
+#
+### CLI capability [🔼](#summary)
+
+- Uses **Spring Shell** to expose a **CLI** for PDF generation.
+
+- Generated files can be found in current directory.
+
+- Commands :
+
+    - `template` : Returns information about a specific template.
+    - `templates` : Returns a list of all templates known to this instance.
+    - `generate` : Creates a PDF file from a template and JSON string, then stores it on disk.
+
+- **Conditional configuration** :
+
+    - Active on `pdfer-cli` **profile**.
+
+- Interactive shell must be explicitly enabled :
+
+    ``` yaml
+    spring.shell.interactive.enabled: true 
+    ```
+<br>
+
+*Ex :*
+
+``` bash
+generate --template 'default' --payload '{ "name": "John", "age": 7, "address": "somewhere" }' --filename 'test.pdf'
 ```

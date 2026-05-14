@@ -27,4 +27,9 @@ dependencies {
 			requireCapability('pdfer:pdfer-core-email')
 		}
 	}
+	implementation(project(':pdfer-core')) {
+		capabilities {
+			requireCapability('pdfer:pdfer-core-cli')
+		}
+	}
 }
