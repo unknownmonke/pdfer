@@ -9,5 +9,6 @@ import org.springframework.context.annotation.ComponentScan;
 @ConfigurationPropertiesScan(basePackages = "pdfer.core.props")
 public class CoreConfiguration {
 
+    public static final String PROFILE_ACTUATOR = "pdfer-actuator";
     public static final String PROFILE_CLI = "pdfer-cli";
 }

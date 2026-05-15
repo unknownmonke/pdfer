@@ -12,6 +12,7 @@
     - [Web capability](#web-capability-)
     - [Email capability](#email-capability-)
     - [CLI capability](#cli-capability-)
+- [Actuator](#actuator-)
 
 <br>
 
@@ -141,7 +142,7 @@
 
 - Subcontexts with their registered templates are kept in a **registry** : `Map<String, AnnotationConfigApplicationContext> templateRegistries`.
 
-- The `PdferRegistryContainer` component :
+- The `TemplateRegistryContainer` component :
 
     - Launches the scan and starts all contexts.
     - Exposes methods to find and list templates.
@@ -223,11 +224,9 @@ pdfer:
             download-uri: download
             mail-uri: mail
     mail:
-        enable: true
-        endpoint:
-            enable: true # Enables sending mail through HTTP.
+        enable: true # Enables sending mail through HTTP.
         send-from: pdf.client@monke.org
-        smtp:
+        smtp-server:
             host: ${SMTP_HOST} # Ex : smtp.gmail.com.
             port: 587
             username: ${SMTP_USERNAME} # Ex : Google mail address.
@@ -252,7 +251,7 @@ pdfer:
 - **Conditional configuration** :
 
     - Active on `pdfer-cli` **profile**.
-
+    
 - Interactive shell must be explicitly enabled :
 
     ``` yaml
@@ -265,3 +264,19 @@ pdfer:
 ``` bash
 generate --template 'default' --payload '{ "name": "John", "age": 7, "address": "somewhere" }' --filename 'test.pdf'
 ```
+<br>
+
+## Actuator [🔼](#summary)
+
+- Core library :
+
+    - **Logs** web and mail configuration on startup.
+
+    - Exposes 4 endpoints on `pdfer-actuator` profile :
+
+        - `health` : Application is up if service beans and template registry bean are registered in the application context.
+        - `pdfer-web` : Exposes web configuration.
+        - `pdfer-mail` : Exposes mail configuration.
+        - `pdfer-registry` : Can list all templates with `/templates` or specific template info with `/template/{path}`.
+
+- Properties are also listed with Spring configuration metadata to provide hints for autocomplete ([doc](https://docs.spring.io/spring-boot/specification/configuration-metadata/annotation-processor.html#appendix.configuration-metadata.annotation-processor.adding-additional-metadata)).

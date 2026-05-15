@@ -20,3 +20,9 @@
 
 - Logging of configuration at startup.
 - CLI capability with command line generation.
+
+## [1.3.0] - 2026-05-15
+
+### Added
+
+- Actuator endpoints for configuration and template information.

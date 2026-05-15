@@ -7,7 +7,7 @@ spring:
   application:
     name: pdfer-client
   profiles:
-    active: pdfer-cli
+    active: pdfer-cli, pdfer-actuator
 
 pdfer:
   web:
@@ -27,6 +27,12 @@ pdfer:
       java-mail-properties:
         mail.smtp.auth: true
         mail.smtp.starttls.enable: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, pdfer-web, pdfer-mail, pdfer-registry
 
 ---
 spring:
