@@ -62,6 +62,7 @@
 
 <br>
 
+> [!NOTE]  
 > Templates must be registered within the `pdfer.templates` package.
 
 #
