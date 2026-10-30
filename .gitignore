@@ -1,20 +1,16 @@
 .env
 .gradle
-build/
 !gradle/wrapper/gradle-wrapper.jar
+build/
+out/
 !**/src/main/**/build/
 !**/src/test/**/build/
+!**/src/main/**/out/
+!**/src/test/**/out/
 
 ### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/copilot*
-.idea/libraries/
-.idea/workspace.xml
+.idea/
 *.iws
 *.iml
 *.ipr
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
+

@@ -26,7 +26,7 @@
 
 <br>
 
-<img src="./readme/overview.webp" alt="drawing" width="900"/>
+<img src="assets/overview.webp" alt="drawing" width="900"/>
 
 <br>
 
@@ -115,7 +115,7 @@
 
         <br>
 
-        <img src="./readme/subcontexts_ex.webp" alt="drawing" width="700"/>
+        <img src="assets/subcontexts_ex.webp" alt="drawing" width="700"/>
 
         <br>
 
@@ -150,7 +150,7 @@
 
 <br>
 
-<img src="./readme/pdfer_core.webp" alt="drawing" width="1000"/>
+<img src="assets/pdfer_core.webp" alt="drawing" width="1000"/>
 
 #
 ### `pdf-client` [🔼](#summary)
